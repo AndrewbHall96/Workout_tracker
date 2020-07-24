@@ -24,3 +24,18 @@ db.User.create({ name: "Ernest Hemingway" })
   .catch(({ message }) => {
     console.log(message);
   });
+
+  app.get("/exercise", (req,res) => {
+      db.Exercise.find({})
+      .then(dbExercise => {
+          res.json(dbExercise);
+      })
+      .catch(err => {
+          res.json(err);
+      });
+  });
+
+
+  app.listen(PORT, () => {
+    console.log(`App running on port ${PORT}!`);
+  });
