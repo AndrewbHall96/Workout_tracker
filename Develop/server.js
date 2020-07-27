@@ -40,28 +40,38 @@ app.get("/exercise/new", (req, res) => {
 // })
 
 
-app.post("/exercise/new", (req, res) => {
-  db.Workout.insert(req.body, (err, data) => {
-    if(err) {
-      console.log(err)
-    } else {
+// app.post("/exercise/new", (req, res) => {
+//   db.Workout.insert(req.body, (err, data) => {
+//     if(err) {
+//       console.log(err)
+//     } else {
 
-    }
-  })
-  res.json.body;
-});
+//     }
+//   })
+//   res.json.body;
+// });
+app.get("/exercise/new", (req, res) => {
+  // db.Workout.find().sort({day:-1}).limit(1)
+  //   .then(dbContinue => {
+      res.sendFile(__dirname + '/public/exercise.html');
+    })
+    // .catch(err => {
+    //   res.json(err);
+    // });
+
 
 // Let's examine this
 app.get("/exercise/continue", (req, res) => {
-  db.Workout.find().sort({day:-1}).limit(1)
-    .then(dbContinue => {
+  // db.Workout.find().sort({day:-1}).limit(1)
+  //   .then(dbContinue => {
       res.sendFile(__dirname + '/public/exercise.html');
     })
-    .catch(err => {
-      res.json(err);
-    });
-})
+    // .catch(err => {
+    //   res.json(err);
+    // });
+// })
 
+// assuming I'm understanding this correctly
 app.post("/exercise/continue", (req, res) => {
   db.Workout.update({_id: req.body._id}, (err, data) => {
     if(err) {
