@@ -64,13 +64,13 @@ app.get("/api/workouts", (req, res) => {
       res.json(dbContinue);
     })
     .catch(err => {
-      res.json(err);
+      res.status(500).json(err);
     });
   })
 // get total d
   // DB.workout.find. with id that is given to us through the request/ We WIll pull the workout plan from the db and have it in a .then. dbContinue. dbContinue. exercises.append(appen infor below in to the arrray) Then update with id, but pass in the workout plan (dbContinue).
   app.put("/api/workouts/:id", (req, res) => {
-    db.Workout.update({ _id: mongojs.ObjectId(req.params.id) }, {
+    db.Workout.findByIdAndUpdate(req.params.id, {
       name: req.body.name,
       weight: req.body.weight,
       sets: req.body.sets,
@@ -80,6 +80,9 @@ app.get("/api/workouts", (req, res) => {
     )
     .then(dbWorkout => {
       res.json(dbWorkout)
+    })
+    .catch(err => {
+      res.status(500).json(err);
     })
   });
 
