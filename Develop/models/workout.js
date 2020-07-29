@@ -36,10 +36,10 @@ const workOutSchema = new Schema({
             distance: {
                 type: Number
             }
-
         }
     ]
 });
+
 // Workout is variable
 const Workout = mongoose.model("Workout", workOutSchema);
 
