@@ -31,6 +31,17 @@ app.get("/stats", (req, res) => {
   //   .then(dbExercise => {
   res.sendFile(path.join(__dirname + '/public/stats.html'));
 });
+
+app.get("/api/workouts/range", (req, res) => {
+  db.Workout.find().sort({ day: -1 }).limit(7)
+    .then(dbContinue => {
+      // total duration and attach to object. Pull in total durations  from the week. Will need a loop. Console.log (dbcontinue) to start.
+      res.json(dbContinue);
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+  })
 // .catch(err => {
 //   res.json(err);
 // });
