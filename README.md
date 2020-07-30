@@ -13,5 +13,5 @@
 * Upon opening the application, information of the last workout are displayed
 *
 
-##Questions
+## Questions
 If you have any questions about this repository, contact me directly at andrewbhall96@gmail.com.
